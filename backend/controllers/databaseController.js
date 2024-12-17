@@ -29,10 +29,9 @@ class DatabaseController {
 
     getDatabaseStructure = handleAsyncError(async (req, res) => {
         try {
-            // const dbStructure = await this.mongoService.getDatabaseStructure();
-            // const response = formatResponse(dbStructure);
-            // res.status(200).json(response);
-            res.status(200).json(mockData);
+            const dbStructure = await this.mongoService.getDatabaseStructure();
+            const response = formatResponse(dbStructure);
+            res.status(200).json(response);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
